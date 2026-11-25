@@ -8,4 +8,4 @@ WORKDIR /app
 COPY . .
 
 # 4. Lệnh mặc định sẽ chạy khi khởi động container
-CMD ["node", "math.test.js"]
+CMD ["node", "server.js"]
