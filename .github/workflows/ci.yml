@@ -15,4 +15,5 @@ jobs:
         run: docker build -t demo-cicd-app .
 
       - name: Chay kiem thu ben trong Docker Container
-        run: docker run --rm demo-cicd-app
+        run: docker run --rm demo-cicd-app node math.test.js
+
