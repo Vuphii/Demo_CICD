@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   release:
@@ -17,6 +18,15 @@ jobs:
 
       - name: Chay kiem thu truoc khi phat hanh
         run: node math.test.js
+
+      - name: Dang nhap GitHub Container Registry (GHCR)
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build va day Docker Image len GHCR
+        run: |
+          docker build -t ghcr.io/vuphii/demo_cicd:${{ github.ref_name }} -t ghcr.io/vuphii/demo_cicd:latest .
+          docker push ghcr.io/vuphii/demo_cicd:${{ github.ref_name }}
+          docker push ghcr.io/vuphii/demo_cicd:latest
 
       - name: Tao ban phat hanh tren GitHub
         env:
