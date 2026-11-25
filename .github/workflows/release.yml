@@ -1,0 +1,24 @@
+name: Auto Release CD
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tai code ve
+        uses: actions/checkout@v4
+
+      - name: Chay kiem thu truoc khi phat hanh
+        run: node math.test.js
+
+      - name: Tao ban phat hanh tren GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create ${{ github.ref_name }} --generate-notes
