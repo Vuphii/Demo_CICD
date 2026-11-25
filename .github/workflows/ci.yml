@@ -11,6 +11,8 @@ jobs:
       - name: Tai code ve
         uses: actions/checkout@v4
 
-      - name: Chay file kiem thu
-        run: node math.test.js
-        
+      - name: Dong goi Docker Image
+        run: docker build -t demo-cicd-app .
+
+      - name: Chay kiem thu ben trong Docker Container
+        run: docker run --rm demo-cicd-app
