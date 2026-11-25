@@ -1,0 +1,16 @@
+name: Auto Test CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tai code ve
+        uses: actions/checkout@v4
+
+      - name: Chay file kiem thu
+        run: node math.test.js
+        
