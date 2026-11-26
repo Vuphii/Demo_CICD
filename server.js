@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
   res.end(`
     <h1>Demo CI/CD thành công!</h1>
-    <p>Phiên bản: <b>v1.2.0</b></p>
+    <p>Phiên bản: <b>v1.2.1 - Tự động Deploy thành công!</b></p>
     <p>Kết quả hàm add(2, 3) = <b>${add(2, 3)}</b></p>
   `);
 });
