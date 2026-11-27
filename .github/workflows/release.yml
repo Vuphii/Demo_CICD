@@ -32,3 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release create ${{ github.ref_name }} --generate-notes
+        
+      - name: Kich hoat Render tu dong deploy ban moi
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}" 
+  
